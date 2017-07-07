@@ -1,0 +1,800 @@
+swagger: "2.0"
+info:
+  description: |
+    定义素材暴露的API
+  version: "0.1"
+  title: 素材API
+  contact:
+    name: 刘晓辉
+
+host: localhost:8085
+basePath: /projecta
+schemes:
+  - http
+paths:
+
+  /content/material_list:
+    post:
+      tags:
+        - content
+      summary: 查看素材列表
+      operationId: getMaterialList
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: body
+          required: true
+          schema:
+            $ref: "#/definitions/content_material_list_req"
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/content_material_list_resp"
+            
+  /content/material_list_all:
+    post:
+      tags:
+        - content
+      summary: 查看素材列表
+      operationId: contentMaterialListAllGroup
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: body
+          required: true
+          schema:
+            $ref: "#/definitions/content_material_list_all_req"
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/content_material_list_all_resp"
+
+  /content/material_get:
+    get:
+      tags:
+        - content
+      summary: 查看素材
+      description: "查看素材"
+      operationId: getMaterial
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          description: 素材ID
+          required: true
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/content_material_get_resp"
+
+  /content/material_batch_add:
+    post:
+      tags:
+        - content
+      summary: 批量添加素材
+      description: "批量添加素材"
+      operationId: batchAddMaterial
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: body
+          required: true
+          schema:
+            $ref: "#/definitions/content_material_batch_add_req"
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/BasicResp"
+            
+  /content/material_update:
+    post:
+      tags:
+        - content
+      summary: 更新素材
+      description: "更新素材"
+      operationId: updateMaterial
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: body
+          required: true
+          schema:
+            $ref: "#/definitions/content_material_update_req"
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/BasicResp"
+            
+  /content/material_batch_delete:
+    post:
+      tags:
+        - content
+      summary: 批量删除素材
+      description: "批量删除素材"
+      operationId: batchDeleteMaterial
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: body
+          required: true
+          schema:
+            $ref: "#/definitions/content_material_batch_delete_req"
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/BasicResp"
+            
+
+  /content/material_group_list:
+    get:
+      tags:
+        - content
+      summary: 查看素材素材分组
+      operationId: getMaterialGroupList
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: seller_id
+          type: integer
+          format: int64
+          description: 商户ID
+          required: true
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/content_material_group_list_resp"
+            
+  /content/material_group_get:
+    get:
+      tags:
+        - content
+      summary: 查看素材分组
+      description: "查看素材分组"
+      operationId: getMaterialGroup
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: id
+          description: 素材分组ID
+          required: true
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/content_material_group_get_resp"
+
+  /content/material_group_add:
+    post:
+      tags:
+        - content
+      summary: 添加素材分组
+      description: "添加素材分组"
+      operationId: addMaterialGroup
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: body
+          required: true
+          schema:
+            $ref: "#/definitions/content_material_group_add_req"
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/BasicResp"
+            
+  /content/material_group_update:
+    post:
+      tags:
+        - content
+      summary: 更新素材分组
+      description: "更新素材分组"
+      operationId: updateMaterialGroup
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: body
+          required: true
+          schema:
+            $ref: "#/definitions/content_material_group_update_req"
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/BasicResp"
+            
+  /content/material_group_delete:
+    post:
+      tags:
+        - content
+      summary: 删除素材分组
+      description: "删除素材分组"
+      operationId: deleteMaterialGroup
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: body
+          required: true
+          schema:
+            $ref: "#/definitions/content_material_group_delete_req"
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/BasicResp"
+            
+  /content/material_group_move:
+    post:
+      tags:
+        - content
+      summary: 移动素材分组
+      description: "移动素材分组"
+      operationId: moveMaterialGroup
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: body
+          required: true
+          schema:
+            $ref: "#/definitions/content_material_group_move_req"
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/BasicResp"
+            
+  /content/material_batch_upload:
+    post:
+      tags:
+        - content
+      summary: 批量上传素材
+      description: "批量上传素材"
+      operationId: uploadBatchMaterial
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      parameters:
+        - in: formData
+          name: type
+          description: 素材类型，比如MUSIC, IMAGE
+          required: false
+          type: string
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/content_material_group_upload_resp"
+            
+  /content/private_material_upload:
+    post:
+      tags:
+        - content
+      summary: 隐私图片上传
+      description: "隐私图片上传"
+      operationId: uploadPrivateMaterial
+      consumes:
+        - multipart/form-data
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/BasicResp"
+            
+  /content/qrcode_generate:
+    post:
+      tags:
+        - content
+      summary: 根据信息生成二维码图片地址
+      description: 根据信息生成二维码图片地址
+      operationId: generateQrcode
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: body体， 用来记录传入的参数
+          required: true
+          schema:
+            $ref: "#/definitions/generateQrcodeReq"
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/generateQrcodeResp"
+            
+  /content/base64_upload:
+    post:
+      tags:
+        - content
+      summary: 上传base64图片返回url
+      description: 上传base64图片返回url
+      operationId: uploadBase64Image
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: body体， 用来记录传入的参数
+          required: true
+          schema:
+            $ref: "#/definitions/uploadBase64ImageReq"
+      responses:
+        "200":
+          description: 正常响应
+          schema:
+            $ref: "#/definitions/uploadBase64ImageResp"   
+
+####################################################
+#            definitions                           #
+####################################################
+definitions:
+  ###################### material ####################
+  material:
+    type: object
+    properties:
+      id: 
+        type: integer 
+        format: int64 
+        description: '' 
+      seller_id: 
+        type: integer 
+        format: int64 
+        description: '' 
+      material_group_id: 
+        type: integer 
+        format: int64 
+        description: '' 
+      url: 
+        type: string 
+        description: '' 
+      file_name: 
+        type: string 
+        description: '文件名, 可以修改 ' 
+      type: 
+        type: string 
+        description: 'PICTURE: 图片 MUSIC:音频 VIDEO:视频 TEXT:文本 ' 
+      text_content: 
+        type: string 
+        description: '文本内容 ' 
+      description: 
+        type: string 
+        description: '描述应用场景 ' 
+      delete_flag: 
+        type: integer 
+        format: int32 
+        description: ' 0: 未删除 1:已删除' 
+      create_time: 
+        type: string 
+        format: date-time 
+        description: '' 
+  ###################### material_group ####################
+  material_group:
+    type: object
+    properties:
+      id: 
+        type: integer 
+        format: int64 
+        description: '' 
+      seller_id: 
+        type: integer 
+        format: int64 
+        description: ' 商户ID' 
+      type: 
+        type: string 
+        description: 'PICTURE: 图片 MUSIC:音频 VIDEO:视频 TEXT:文本 ' 
+      name: 
+        type: string 
+        description: '' 
+      create_time: 
+        type: string 
+        format: date-time 
+        description: '' 
+      update_time: 
+        type: string 
+        format: date-time 
+        description: '' 
+
+
+
+
+
+  BasicResp:
+    type: object
+    properties:
+      result:
+        type: string
+        description: SUCCESS|FAIL|NOTFOUND|INVALID
+      error_code:
+        type: string
+        description: 错误码
+      return_msg:
+        type: string
+        description: 返回信息，如非空，为错误原因
+        example: 参数格式校验错误
+
+
+            
+  content_material_list_req:
+    type: object
+    properties:
+      seller_id:
+        type: integer
+        format: int64
+        description: '商户ID'
+      type:
+        type: string
+        description: '素材类型'
+      group_id:
+        type: integer
+        format: int64
+        description: '素材分组ID'
+      file_name:
+        type: string
+        description: '素材名称'
+      page_num:
+        type: integer
+        format: int64
+        description: '页码'
+      page_size:
+        type: integer
+        format: int64
+        description: '每页的数据'
+        
+  content_material_list_resp:
+    allOf:
+    - $ref: '#/definitions/BasicResp'
+    - type: object
+      properties:  
+        total_results:
+          type: integer
+          format: int64
+          description: 总记录数
+        return_data:
+          type: array
+          items:
+            $ref: '#/definitions/material'
+        
+  content_material_get_resp:
+    allOf:
+    - $ref: '#/definitions/BasicResp'
+    - type: object
+      properties:  
+        return_data:
+          $ref: '#/definitions/material'
+
+  content_material_batch_add_req:
+    type: object
+    properties:
+      materialids:
+        type: array
+        items:
+          $ref: "#/definitions/content_material_batch_add_item"
+
+  content_material_batch_add_item:
+    type: object
+    properties:
+      seller_id:
+        type: integer
+        format: int64
+        description: '商户ID '
+      material_group_id:
+        type: integer
+        format: int64
+        description: '分组ID '
+      url:
+        type: string
+        description: '资源地址 '
+      file_name:
+        type: string
+        description: '文件名 '
+      type:
+        type: string
+        description: 'PICTURE: 图片 MUSIC:音频 VIDEO:视频 TEXT:文本 '
+      text_content:
+        type: string
+        description: '文本内容 '
+      description:
+        type: string
+        description: '描述应用场景 '
+
+  content_material_update_req:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: '素材ID '
+      seller_id:
+        type: integer
+        format: int64
+        description: '商户ID '
+      file_name:
+        type: string
+        description: '文件名 '
+        
+  content_material_batch_delete_req:
+    type: object
+    properties:
+      materialids:
+        type: array
+        items:
+          $ref: "#/definitions/content_material_batch_delete_item"
+            
+              
+  content_material_batch_delete_item:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: '素材ID '
+      seller_id:
+        type: integer
+        format: int64
+        description: '商户ID '
+
+        
+        
+  content_material_group_list_resp:
+    allOf:
+    - $ref: '#/definitions/BasicResp'
+    - type: object
+      properties:  
+        total_results:
+          type: integer
+          format: int64
+          description: 总记录数
+        return_data:
+          type: array
+          items:
+            $ref: '#/definitions/content_material_group_list_item'
+                
+  content_material_group_list_item:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: '分组ID '
+      name:
+        type: string
+        description: '分组名称 '
+      count:
+        type: integer
+        format: int64
+        description: '分组内素材数量 '
+                
+  content_material_group_get_resp:
+    allOf:
+    - $ref: '#/definitions/BasicResp'
+    - type: object
+      properties:  
+        return_data:
+          $ref: '#/definitions/material_group'
+          
+
+  content_material_group_add_req:
+    type: object
+    properties:
+      seller_id:
+        type: integer
+        format: int64
+        description: ' 商户ID'
+      type:
+        type: string
+        description: 'PICTURE: 图片 MUSIC:音频 VIDEO:视频 TEXT:文本 '
+      name:
+        type: string
+        description: ' 分组名称'
+        
+  content_material_group_update_req:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: ' 分组ID'
+      name:
+        type: string
+        description: ' 分组名称'
+      seller_id:
+        type: integer
+        format: int64
+        description: ' 商户ID'
+        
+  content_material_group_delete_req:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        description: '分组ID '
+      seller_id:
+        type: integer
+        format: int64
+        description: ' 商户ID'
+
+  content_material_group_move_req:
+    type: object
+    properties:  
+        materialids:
+          type: array
+          items:
+            type: integer
+            format: int64
+            description: '素材ID '
+        target_group_id:
+          type: integer
+          format: int64
+          description: '分组ID '
+        seller_id:
+          type: integer
+          format: int64
+          description: ' 商户ID'
+       
+          
+  content_material_group_upload_resp:
+    allOf:
+    - $ref: '#/definitions/BasicResp'
+    - type: object
+      properties:  
+        return_data:
+          type: array
+          items:
+            $ref: '#/definitions/content_material_group_upload_respdef'
+            
+  content_material_group_upload_respdef:
+    type: object
+    properties:
+      url:
+        type: string
+        description: ' 素材链接'
+      file_name:
+        type: string
+        description: ' 名称'
+  content_material_list_all_req:
+    type: object
+    properties:
+      seller_id:
+        type: integer
+        format: int64
+        description: '商户ID'
+      type:
+        type: string
+        description: '素材类型'
+      file_name:
+        type: string
+        description: '素材名称'
+      page_num:
+        type: integer
+        format: int64
+        description: '页码'
+      page_size:
+        type: integer
+        format: int64
+        description: '每页的数据'
+        
+  content_material_list_all_resp:
+    allOf:
+    - $ref: '#/definitions/BasicResp'
+    - type: object
+      properties:  
+        total_results:
+          type: integer
+          format: int64
+          description: 总记录数
+        return_data:
+          type: array
+          items:
+            $ref: '#/definitions/material'
+            
+  generateQrcodeReq:
+    type: object
+    properties:
+      qrcodeString: 
+        type: string 
+        description: '二维码参数字符串' 
+      ossType: 
+        type: string 
+        description: 'oss服务类型,图片服务可以提供图片的大小调整的服务. 根据类型返回 OSS: 代表普通的OSS链接, IMG: 代表图片服务的链接' 
+        
+  generateQrcodeResp:
+    allOf:
+    - $ref: '#/definitions/BasicResp'
+    - type: object
+      properties:  
+        return_data:
+          $ref: '#/definitions/generateQrcodeRespData' 
+          
+  generateQrcodeRespData:
+    type: object
+    properties:
+      url_200:
+        type: string 
+        description: '二维码URL200*200'
+      url_400:
+        type: string 
+        description: '二维码URL400*400'
+      url_600:
+        type: string 
+        description: '二维码URL600*600'  
+      url_800:
+        type: string 
+        description: '二维码URL800*800'  
+        
+  uploadBase64ImageReq:
+    type: object
+    properties:
+      base64ImgStr: 
+        type: string 
+        description: 'base64图片字符串' 
+        
+  uploadBase64ImageResp:
+    allOf:
+    - $ref: '#/definitions/BasicResp'
+    - type: object
+      properties:  
+        return_data:
+          $ref: '#/definitions/uploadBase64ImageRespData' 
+          
+  uploadBase64ImageRespData:
+    type: object
+    properties:
+      url:
+        type: string 
+        description: '图片URL '
